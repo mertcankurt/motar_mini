@@ -1,0 +1,813 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="motar_mini">
+
+<!-- Base_link(Kasa) -->
+
+<link name="base_link">
+    <inertial>
+      <origin
+        xyz="0.00389149427597424 -0.00015148839135587 0.112944596542907"
+        rpy="0 0 0" />
+      <mass
+        value="3.67445198488708" />
+      <inertia
+        ixx="0.0467940450417197"
+        ixy="1.74530794036868E-06"
+        ixz="0.000606132979302621"
+        iyy="0.0828124045585349"
+        iyz="1.60675930800614E-06"
+        izz="0.110099728852575" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://motar_mini/meshes/base_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://motar_mini/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <gazebo reference="base_link">
+	<material>Gazebo/DarkGrey</material>
+  </gazebo>
+
+<!-- Dolap -->
+
+<link name="Dolap">
+    <inertial>
+      <origin xyz="0.03002 -0.00030148 0.2813" rpy="0 0 0" />
+      <mass value="10" />
+      <inertia
+        ixx="0.35346"
+        ixy="0.00024128"
+        ixz="0.010985"
+        iyy="0.23737"
+        iyz="0.00029637"
+        izz="0.25603" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://motar_mini/meshes/Dolap.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.29804 0.29804 0.29804 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://motar_mini/meshes/Dolap.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="dolap" type="fixed">
+    <origin xyz="0 0 0.171" rpy="0 0 -1.5707963267949" />
+    <parent link="base_link" />
+    <child link="Dolap" />
+    <axis xyz="0 0 0" />
+  </joint>
+
+<gazebo reference="Dolap">
+	<material>Gazebo/DarkGrey</material>
+  </gazebo>
+
+<!-- Kapak -->
+
+<link name="Kapak">
+    <inertial>
+      <origin xyz="-0.0014014 0 -0.0050004" rpy="0 0 0" />
+      <mass value="2" />
+      <inertia
+        ixx="0.021226"
+        ixy="1.4868E-17"
+        ixz="1.1211E-07"
+        iyy="0.020927"
+        iyz="-4.3961E-19"
+        izz="0.042127" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://motar_mini/meshes/Kapak.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://motar_mini/meshes/Kapak.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="kapak" type="fixed">
+    <origin xyz="0.00191317694878623 0.151913176948787 0.371" rpy="-1.5707963267949 0 3.14159265358979" />
+    <parent link="base_link" />
+    <child link="Kapak" />
+    <axis xyz="0 0 0" />
+  </joint>
+
+  <gazebo reference="Kapak">
+	<material>Gazebo/DarkGrey</material>
+  </gazebo>
+
+<!-- Menteşe 1 -->
+
+ <link name="Mentese1">
+    <inertial>
+      <origin xyz="-0.0154754052408295 0.00933777170795674 -6.66133814775094E-16" rpy="0 0 0" />
+      <mass value="0.02" />
+      <inertia
+        ixx="2.52199247458237E-06"
+        ixy="4.24420237515516E-08"
+        ixz="-6.58221996770705E-09"
+        iyy="2.52199247458237E-06"
+        iyz="6.58221996772159E-09"
+        izz="5.0301214650179E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://motar_mini/meshes/Mentese1.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://motar_mini/meshes/Mentese1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="mentese1" type="fixed">
+    <origin xyz="-0.185086823051214 0.161813176948787 0.471" rpy="0 0 1.5707963267949" />
+    <parent link="base_link" />
+    <child link="Mentese1" />
+    <axis xyz="0 0 0" />
+  </joint>
+
+<!-- Menteşe 2 -->
+
+ <link name="Mentese2">
+    <inertial>
+      <origin xyz="-0.01547540524083 0.00933777170795688 -2.22044604925031E-16" rpy="0 0 0" />
+      <mass value="0.0127812784020723" />
+      <inertia
+        ixx="2.52199247458239E-06"
+        ixy="4.24420237515519E-08"
+        ixz="-6.58221996771817E-09"
+        iyy="2.52199247458239E-06"
+        iyz="6.58221996765862E-09"
+        izz="5.03012146501795E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://motar_mini/meshes/Mentese2.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://motar_mini/meshes/Mentese2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="mentese2" type="fixed">
+    <origin xyz="0 0 -0.2" rpy="0 0 0" />
+    <parent link="Mentese1" />
+    <child link="Mentese2" />
+    <axis xyz="0 0 0" />
+  </joint>
+
+<!-- Ultrasonic Sensor1 -->
+
+<link name="US1">
+    <inertial>
+      <origin xyz="-0.0074954 -1.8887E-05 4.9384E-05" rpy="0 0 0" />
+      <mass value="0.2" />
+      <inertia
+        ixx="9.3681E-07"
+        ixy="-3.9566E-10"
+        ixz="-2.8114E-09"
+        iyy="1.74E-07"
+        iyz="1.6556E-09"
+        izz="8.8636E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://motar_mini/meshes/US1.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://motar_mini/meshes/US1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="us1" type="fixed">
+    <origin xyz="0.21 -0.08667 0.1" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="US1" />
+    <axis xyz="0 0 0" />
+  </joint>
+
+<!-- Ultrasonic Sensor2 -->
+
+<link name="US2">
+    <inertial>
+      <origin xyz="-0.0074954 -1.8887E-05 4.9384E-05" rpy="0 0 0" />
+      <mass value="0.2" />
+      <inertia
+        ixx="9.3681E-07"
+        ixy="-3.9566E-10"
+        ixz="-2.8114E-09"
+        iyy="1.74E-07"
+        iyz="1.6556E-09"
+        izz="8.8636E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://motar_mini/meshes/US2.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://motar_mini/meshes/US2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="us2" type="fixed">
+    <origin xyz="0.21 0 0.1" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="US2" />
+    <axis xyz="0 0 0" />
+  </joint>
+
+<!-- Ultrasonic Sensor3 -->
+
+<link name="US3">
+    <inertial>
+      <origin xyz="-0.0074954 -1.8887E-05 4.9384E-05" rpy="0 0 0" />
+      <mass value="0.2" />
+      <inertia
+        ixx="9.3681E-07"
+        ixy="-3.9566E-10"
+        ixz="-2.8114E-09"
+        iyy="1.74E-07"
+        iyz="1.6556E-09"
+        izz="8.8636E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://motar_mini/meshes/US3.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://motar_mini/meshes/US3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="us3" type="fixed">
+    <origin xyz="0.21 0.08667 0.1" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="US3" />
+    <axis xyz="0 0 0" />
+  </joint>
+  
+
+<!-- Swivel Wheel1 -->
+
+<link name="SWheel1">
+    <inertial>
+      <origin xyz="4.839E-08 0.0155 0.022137" rpy="0 0 0" />
+      <mass value="0.2" />
+      <inertia
+        ixx="1.3179E-07"
+        ixy="-2.0283E-12"
+        ixz="5.5707E-13"
+        iyy="1.4756E-07"
+        iyz="-1.059E-12"
+        izz="2.6348E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://motar_mini/meshes/SWheel1.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://motar_mini/meshes/SWheel1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="splate1" type="fixed">
+    <origin xyz="0.168499999999998 0.121172061470591 0.0150000000000028" rpy="0 0 -1.5707963267949" />
+    <parent link="base_link" />
+    <child link="SWheel1" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <link name="SWhSup1">
+    <inertial>
+      <origin xyz="-0.00046958 -0.0066637 0.011394" rpy="0 0 0" />
+      <mass value="0.3" />
+      <inertia
+        ixx="2.9995E-07"
+        ixy="-9.3755E-09"
+        ixz="-1.2195E-08"
+        iyy="2.9321E-07"
+        iyz="-9.2072E-08"
+        izz="3.2439E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://motar_mini/meshes/SWhSup1.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://motar_mini/meshes/SWhSup1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="swhsup1" type="continuous">
+    <origin xyz="0 0.0155000000000001 0" rpy="0 0 0" />
+    <parent link="SWheel1" />
+    <child link="SWhSup1" />
+    <axis xyz="0 0 1" />
+  </joint>
+  <link name="SWh1">
+    <inertial>
+      <origin  xyz="-1.8715E-07 -2.7756E-17 1.4278E-06" rpy="0 0 0" />
+      <mass value="0.6" />
+      <inertia
+        ixx="7.3808E-07"
+        ixy="-4.8488E-13"
+        ixz="1.2219E-11"
+        iyy="4.3737E-07"
+        iyz="-7.3265E-22"
+        izz="4.3728E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://motar_mini/meshes/SWh1.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://motar_mini/meshes/SWh1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="swheel1" type="continuous">
+    <origin xyz="0 -0.0154999999999993 -9.9999999999878E-05" rpy="0 0 0" />
+    <parent link="SWhSup1" />
+    <child link="SWh1" />
+    <axis xyz="1 0 0" />
+  </joint>
+
+<!-- Swivel Wheel2 -->
+
+  <link name="SWheel2">
+    <inertial>
+      <origin xyz="4.839E-08 0.0155 0.022137" rpy="0 0 0" />
+      <mass value="0.2" />
+      <inertia
+        ixx="1.3179E-07"
+        ixy="-2.0283E-12"
+        ixz="5.5707E-13"
+        iyy="1.4756E-07"
+        iyz="-1.059E-12"
+        izz="2.6348E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://motar_mini/meshes/SWheel2.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0"  rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://motar_mini/meshes/SWheel2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="splate2" type="fixed">
+    <origin xyz="0.168499999999998 -0.121 0.0150000000000028" rpy="0 0 -1.5707963267949" />
+    <parent link="base_link" />
+    <child link="SWheel2" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <link name="SWhSup2">
+    <inertial>
+      <origin xyz="-0.00046958 -0.0066637 0.011394" rpy="0 0 0" />
+      <mass value="0.3" />
+      <inertia
+        ixx="2.9995E-07"
+        ixy="-9.3755E-09"
+        ixz="-1.2195E-08"
+        iyy="2.9321E-07"
+        iyz="-9.2072E-08"
+        izz="3.2439E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://motar_mini/meshes/SWhSup2.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://motar_mini/meshes/SWhSup2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="swhsup2" type="continuous">
+    <origin xyz="0 0.0154999999999999 0" rpy="0 0 0" />
+    <parent link="SWheel2" />
+    <child link="SWhSup2" />
+    <axis xyz="0 0 1" />
+  </joint>
+  <link name="SWh2">
+    <inertial>
+      <origin xyz="-1.8715E-07 0 1.4278E-06" rpy="0 0 0" />
+      <mass value="0.6" />
+      <inertia
+        ixx="7.3808E-07"
+        ixy="-4.8488E-13"
+        ixz="1.2219E-11"
+        iyy="4.3737E-07"
+        iyz="4.125E-22"
+        izz="4.3728E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://motar_mini/meshes/SWh2.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://motar_mini/meshes/SWh2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="swheel2" type="continuous">
+    <origin xyz="0 -0.0155 -9.99999999983237E-05" rpy="0 0 0" />
+    <parent link="SWhSup2" />
+    <child link="SWh2" />
+    <axis xyz="1 0 0" />
+  </joint>
+<!-- Wheel1 -->
+
+<link name="Wheel1">
+    <inertial>
+      <origin xyz="0.013121 0 0" rpy="0 0 0" />
+      <mass value="0.5" />
+      <inertia
+        ixx="0.00032266"
+        ixy="1.7298E-20"
+        ixz="2.6631E-20"
+        iyy="0.00016712"
+        iyz="-2.987E-17"
+        izz="0.00016712" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://motar_mini/meshes/Wheel1.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.570795 0 1.570795" />
+      <geometry>
+        <cylinder length="0.05" radius="0.06" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="wheel1" type="continuous">
+    <origin xyz="-0.07 0.125 0.06" rpy="-2.2201 0 -1.5708" />
+    <parent link="base_link" />
+    <child link="Wheel1" />
+    <axis xyz="-1 0 0" />
+  </joint>
+
+<!-- Wheel2 -->
+
+<link name="Wheel2">
+    <inertial>
+      <origin xyz="0.013121 -2.7756E-17 -1.1102E-16" rpy="0 0 0" />
+      <mass value="0.5" />
+      <inertia
+        ixx="0.00032266"
+        ixy="1.8433E-20"
+        ixz="-9.7244E-21"
+        iyy="0.00016712"
+        iyz="-2.9887E-17"
+        izz="0.00016712" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://motar_mini/meshes/Wheel2.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.570795 0 1.570795" />
+      <geometry>
+        <cylinder length="0.05" radius="0.06" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="wheel2" type="continuous">
+    <origin xyz="-0.07 -0.125 0.06" rpy="-2.9167 0 -1.5708" />
+    <parent link="base_link" />
+    <child link="Wheel2" />
+    <axis xyz="-1 0 0" />
+  </joint>
+
+<!-- Ultrasonic Sonar Sensors Gazebo Ref. -->
+	<gazebo reference="US1">
+		<material>Gazebo/Green</material>
+		<sensor type="ray" name="US1">
+		  <pose>0 0 0 0 0 0</pose>
+		  <update_rate>5</update_rate>
+		  <ray>
+		    <scan>
+		      <horizontal>
+		        <samples>5</samples>
+		        <resolution>1.0</resolution>
+		        <min_angle>-0.3</min_angle>
+		        <max_angle>0.3</max_angle>
+		      </horizontal>
+		      <vertical>
+		        <samples>5</samples>
+		        <resolution>1</resolution>
+		        <min_angle>-0.3</min_angle>
+		        <max_angle>0.3</max_angle>
+		      </vertical>
+		    </scan>
+		    <range>
+		      <min>0.01</min>
+		      <max>0.9</max>
+		      <resolution>0.01</resolution>
+		    </range>
+		  </ray>
+		  <plugin filename="libgazebo_ros_range.so" name="gazebo_ros_range">
+		    <gaussianNoise>0.005</gaussianNoise>
+		    <alwaysOn>true</alwaysOn>
+		    <updateRate>5</updateRate>
+		    <topicName>US1</topicName>
+		    <frameName>US1</frameName>
+		    <fov>0.7</fov>
+		    <radiation>ultrasound</radiation>
+		  </plugin>
+		</sensor>
+	</gazebo>
+
+	<gazebo reference="US2">
+		<material>Gazebo/Green</material>
+		<sensor type="ray" name="US2">
+		  <pose>0 0 0 0 0 0</pose>
+		  <update_rate>5</update_rate>
+		  <ray>
+		    <scan>
+		      <horizontal>
+		        <samples>5</samples>
+		        <resolution>1.0</resolution>
+		        <min_angle>-0.3</min_angle>
+		        <max_angle>0.3</max_angle>
+		      </horizontal>
+		      <vertical>
+		        <samples>5</samples>
+		        <resolution>1</resolution>
+		        <min_angle>-0.3</min_angle>
+		        <max_angle>0.3</max_angle>
+		      </vertical>
+		    </scan>
+		    <range>
+		      <min>0.01</min>
+		      <max>0.9</max>
+		      <resolution>0.01</resolution>
+		    </range>
+		  </ray>
+		  <plugin filename="libgazebo_ros_range.so" name="gazebo_ros_range">
+		    <gaussianNoise>0.005</gaussianNoise>
+		    <alwaysOn>true</alwaysOn>
+		    <updateRate>5</updateRate>
+		    <topicName>US2</topicName>
+		    <frameName>US2</frameName>
+		    <fov>0.7</fov>
+		    <radiation>ultrasound</radiation>
+		  </plugin>
+		</sensor>
+	</gazebo>
+
+	<gazebo reference="US3">
+		<material>Gazebo/Green</material>
+		<sensor type="ray" name="US3">
+		  <pose>0 0 0 0 0 0</pose>
+		  <update_rate>5</update_rate>
+		  <ray>
+		    <scan>
+		      <horizontal>
+		        <samples>5</samples>
+		        <resolution>1.0</resolution>
+		        <min_angle>-0.3</min_angle>
+		        <max_angle>0.3</max_angle>
+		      </horizontal>
+		      <vertical>
+		        <samples>5</samples>
+		        <resolution>1</resolution>
+		        <min_angle>-0.3</min_angle>
+		        <max_angle>0.3</max_angle>
+		      </vertical>
+		    </scan>
+		    <range>
+		      <min>0.01</min>
+		      <max>0.9</max>
+		      <resolution>0.01</resolution>
+		    </range>
+		  </ray>
+		  <plugin filename="libgazebo_ros_range.so" name="gazebo_ros_range">
+		    <gaussianNoise>0.005</gaussianNoise>
+		    <alwaysOn>true</alwaysOn>
+		    <updateRate>5</updateRate>
+		    <topicName>US3</topicName>
+		    <frameName>US3</frameName>
+		    <fov>0.7</fov>
+		    <radiation>ultrasound</radiation>
+		  </plugin>
+		</sensor>
+	</gazebo>
+
+<!-- Lidar Sensor -->
+
+  <link
+    name="hokuyo_link">
+    <inertial>
+      <origin xyz="-0.0074835 0.010668 9.1926E-05" rpy="0 0 0" />
+      <mass value="0.5" />
+      <inertia
+        ixx="0.00061492"
+        ixy="0.00015824"
+        ixz="8.0198E-07"
+        iyy="0.0010982"
+        iyz="3.0916E-06"
+        izz="0.0009607" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://motar_mini/meshes/Lidar.dae" />
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://motar_mini/meshes/Lidar.dae" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="hokuyo_joint" type="fixed">
+    <origin xyz="0 0.00944754509525184 0.8256" rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child link="hokuyo_link" />
+    <axis xyz="0 0 0" />
+  </joint>
+
+<!-- hokuyo Sensor Plugin-->
+
+ 	<gazebo reference="hokuyo_link">
+		<sensor type="ray" name="head_hokuyo_sensor">
+		<pose>0 0 0 1 0 0</pose>
+		<visualize>true</visualize>
+		<update_rate>40</update_rate>
+		<ray>
+		<scan>
+			<horizontal>
+				<samples>720</samples>
+				<resolution>1</resolution>
+				<min_angle>-3.1416</min_angle>
+				<max_angle>3.1416</max_angle>
+			</horizontal>
+		</scan>
+		<range>
+			<min>0.10</min>
+			<max>10.0</max>
+			<resolution>0.01</resolution>
+		</range>
+		<noise>
+			<type>gaussian</type>
+			<mean>0.0</mean>
+			<stddev>0.01</stddev>
+		</noise>
+		</ray>
+
+	<plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so">
+			<topicName>/motar_mini/laser/scan</topicName>
+			<frameName>hokuyo_link</frameName>
+		   </plugin>
+		</sensor>
+	</gazebo>
+
+<!-- Diff Drive Control Plugin -->
+
+  <gazebo>
+     <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+       <alwaysOn>true</alwaysOn>
+       <legacyMode>false</legacyMode>
+       <updateRate>40</updateRate>
+       <leftJoint>wheel1</leftJoint>
+       <rightJoint>wheel2</rightJoint>
+       <wheelSeparation>0.42</wheelSeparation>
+       <wheelDiameter>0.12</wheelDiameter>
+       <torque>20</torque>
+       <commandTopic>cmd_vel</commandTopic>
+       <odometryTopic>odom</odometryTopic>
+       <odometryFrame>odom</odometryFrame>
+       <robotBaseFrame>base_link</robotBaseFrame>
+       <robotNamespace>/</robotNamespace>
+     </plugin>
+  </gazebo> 
+<!-- Planar Move Plugin ->
+  <gazebo>
+     <plugin name="base_controller" filename="libgazebo_ros_planar_move.so">
+            <commandTopic>cmd_vel</commandTopic>
+            <odometryTopic>odom</odometryTopic>
+            <odometryFrame>odom</odometryFrame>
+            <odometryRate>100</odometryRate>
+            <robotBaseFrame>base_link</robotBaseFrame>
+     </plugin>
+  </gazebo>
+-->
+
+</robot>
