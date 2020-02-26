@@ -1,5 +1,5 @@
 # motar_mini v0.1
-The HAMER_Mini robot package is designed as a sub-version of the "Medical Autonomous Carrying Robot" main model. ROS Melodic is compatible.
+The motar_mini robot package is designed as a sub-version of the "Medical Autonomous Carrying Robot" main model. ROS Melodic is compatible.
 
 For motar main model : https://github.com/mertwlf/MOTAR
 
