@@ -59,7 +59,7 @@ Then Launch Rviz amcl launch file:
 
 ------------------------------------------------------------------------------------------
 Contributors: 
-Mertcan KURT
-Burak KARGACI
-Yeter ATEŞ
+Mertcan KURT\n
+Burak KARGACI\n
+Yeter ATEŞ\n
 Musa ERTUĞRUL
