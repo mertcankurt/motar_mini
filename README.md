@@ -48,6 +48,7 @@ SLAM Launching:
 # motar_mini v0.4
 -----------------------------
 -   Added point to point movement capability.
+-   Added a launch file for opening both the map and the robot at the same time in gazebo(motar_with_map.launch)
 
 First Launch Gazebo:
 
@@ -59,7 +60,11 @@ Then Launch Rviz amcl launch file:
 
 ------------------------------------------------------------------------------------------
 Contributors: 
-Mertcan KURT\n
-Burak KARGACI\n
-Yeter ATEŞ\n
+
+Mertcan KURT
+
+Burak KARGACI
+
+Yeter ATEŞ
+
 Musa ERTUĞRUL
