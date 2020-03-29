@@ -15,7 +15,7 @@ gpio.setup(13,gpio.OUT)
 gpio.setup(15,gpio.OUT)
 
 msg = """
-Control Your motar_mini Robot!
+Control motar_mini Robot!
 ---------------------------
 Moving around:
        w

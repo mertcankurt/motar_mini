@@ -1,0 +1,7 @@
+
+<launch>
+
+<node pkg="motar_mini" name="motar_mini_keyboard" type="motar_mini_keyboard.py" output="screen" >
+</node>
+
+</launch>

@@ -1,0 +1,12 @@
+
+<launch>
+
+<include file="$(find motar_mini)/launch/sonar_array.launch"/>
+
+<node pkg="motar_mini" name="motar_keyboard" type="motar_keyboard_with_sonar.py" output="screen" >
+</node>
+
+<node pkg="motar_mini" name="obstacle_avoid" type="obstacle_avoid_sonar.py" output="screen" >
+</node>
+
+</launch>
