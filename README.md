@@ -65,7 +65,7 @@ Then Launch Rviz amcl launch file:
 - Both a onefile executable and all the python codes are included
 
 First Do a catkin_make,
-Then open The file with no extension that is named Interface in the Folder motar_mini/scripts/Interface/Interface
+Then open The file with no extension that is named Interface in the Folder motar_mini/scripts/Interface
 
 If you want to open the interface from a python file open terminal in the Interface Folder and type:
 
