@@ -56,6 +56,20 @@ First Launch Gazebo:
 Then Launch Rviz amcl launch file:
 
     $ roslaunch motar_mini amcl.launch
+------------------------------------------------------------------------------------------
+# motar_mini v0.5
+-----------------------------
+- Added Interface that can manually control the robot,and its speed  
+- The interface also publishes patient,room,medicine and destination to topic motar_mini/dprm
+- The interface has a login system. you can add a new account if you know the username and password of a viable account
+- Both a onefile executable and all the python codes are included
+
+First Do a catkin_make,
+Then open The file with no extension that is named Interface in the Folder motar_mini/scripts/Interface/Interface
+
+If you want to open the interface from a python file open terminal in the Interface Folder and type:
+
+    python login.py
 
 
 ------------------------------------------------------------------------------------------
