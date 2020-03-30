@@ -533,21 +533,21 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://motar_mini/meshes/Wheel1.STL" />
+        <mesh filename="package://motar_mini/meshes/Wheel1.dae" />
       </geometry>
       <material name="">
         <color rgba="0.75294 0.75294 0.75294 1" />
       </material>
     </visual>
     <collision>
-      <origin xyz="0 0 0" rpy="1.570795 0 1.570795" />
+      <origin xyz="0 0 0" rpy="1.570795 0 -1.570795" />
       <geometry>
         <cylinder length="0.05" radius="0.06" />
       </geometry>
     </collision>
   </link>
   <joint name="wheel1" type="continuous">
-    <origin xyz="-0.07 0.125 0.06" rpy="-2.2201 0 -1.5708" />
+    <origin xyz="-0.07 0.155 0.06" rpy="-1.5708 0 -1.5708" />
     <parent link="base_link" />
     <child link="Wheel1" />
     <axis xyz="-1 0 0" />
@@ -570,21 +570,21 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://motar_mini/meshes/Wheel2.STL" />
+        <mesh filename="package://motar_mini/meshes/Wheel2.dae" />
       </geometry>
       <material name="">
         <color rgba="0.75294 0.75294 0.75294 1" />
       </material>
     </visual>
     <collision>
-      <origin xyz="0 0 0" rpy="1.570795 0 1.570795" />
+      <origin xyz="0 0 0" rpy="1.570795 0 -1.570795" />
       <geometry>
         <cylinder length="0.05" radius="0.06" />
       </geometry>
     </collision>
   </link>
   <joint name="wheel2" type="continuous">
-    <origin xyz="-0.07 -0.125 0.06" rpy="-2.9167 0 -1.5708" />
+    <origin xyz="-0.07 -0.125 0.06" rpy="-1.5708 0 -1.5708" />
     <parent link="base_link" />
     <child link="Wheel2" />
     <axis xyz="-1 0 0" />
@@ -749,7 +749,7 @@
  	<gazebo reference="hokuyo_link">
 		<sensor type="ray" name="head_hokuyo_sensor">
 		<pose>0 0 0 1 0 0</pose>
-		<visualize>true</visualize>
+		<visualize>false</visualize>
 		<update_rate>40</update_rate>
 		<ray>
 		<scan>

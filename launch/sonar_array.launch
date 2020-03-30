@@ -1,0 +1,9 @@
+
+<launch>
+
+
+<node pkg="motar_mini" name="sonar_array" type="sonar_array.py" output="screen" >
+</node>
+
+
+</launch>
