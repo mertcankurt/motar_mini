@@ -94,7 +94,7 @@ class Ui_Dialog(object):
                 Dialog.hide()
                 self.InterfaceShow()
             else:
-                self.warningBox('Warning','Invalid Username And Password')
+                self.warningBox('Warning','Invalid Username And/Or Password')
             connection.close()
         
 

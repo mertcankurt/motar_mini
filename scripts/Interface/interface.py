@@ -9,6 +9,7 @@ from dprm.msg import dprm
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import (QSlider)
+from PyQt5.QtGui import QPixmap
 import sys
 
 turn=1.0
@@ -28,12 +29,14 @@ class Ui_MainWindow(object):
         self.robotmvmtgroupbox.setObjectName("robotmvmtgroupbox")
         self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.robotmvmtgroupbox)
         self.verticalLayout_5.setObjectName("verticalLayout_5")
-        self.robotpose = QtWidgets.QGraphicsView(self.robotmvmtgroupbox)
-        self.robotpose.setMinimumSize(QtCore.QSize(210, 150))
-        self.robotpose.setMaximumSize(QtCore.QSize(620, 500))
-        self.robotpose.setStyleSheet("")
+        #Robot Pose
+        self.robotpose = QtWidgets.QLabel(self.robotmvmtgroupbox)
+        self.robotpose.setMinimumSize(QtCore.QSize(210, 410))
         self.robotpose.setObjectName("robotpose")
+        self.robotpose.setPixmap(QPixmap('map_from_top.png'))
+        self.robotpose.setScaledContents(True)
         self.verticalLayout_5.addWidget(self.robotpose)
+        
         self.formLayout_2 = QtWidgets.QFormLayout()
         self.formLayout_2.setObjectName("formLayout_2")
         self.xyzpose = QtWidgets.QLineEdit(self.robotmvmtgroupbox)
@@ -172,15 +175,18 @@ class Ui_MainWindow(object):
         self.returnbase.setStyleSheet("\n""background-color: rgb(115, 210, 22);")
         self.returnbase.setObjectName("returnbase")
         self.returnbase.clicked.connect(lambda: self.ReturnBase())
-        
-        self.robotcam = QtWidgets.QGraphicsView(self.centralwidget)
+        #Robot Cam
+        self.robotcam = QtWidgets.QLabel(self.centralwidget)
         self.robotcam.setGeometry(QtCore.QRect(30, 20, 373, 210))
         self.robotcam.setMinimumSize(QtCore.QSize(210, 150))
         self.robotcam.setMaximumSize(QtCore.QSize(620, 500))
         self.robotcam.setObjectName("robotcam")
+        self.robotcam.setPixmap(QPixmap('camera.png'))
+        self.robotcam.setScaledContents(True)
         self.robotcamlabel = QtWidgets.QLabel(self.centralwidget)
         self.robotcamlabel.setGeometry(QtCore.QRect(160, 0, 101, 20))
         self.robotcamlabel.setObjectName("robotcamlabel")
+        
         self.loglabel = QtWidgets.QLabel(self.centralwidget)
         self.loglabel.setGeometry(QtCore.QRect(1040, 0, 67, 17))
         font = QtGui.QFont()
@@ -532,6 +538,17 @@ class Ui_MainWindow(object):
         self.sendRobot(0,0,0,0,0,"")
         self.clicked("Returning to Base Point")
         self.is_man_control(0)
+        
+class MyWindow(QtWidgets.QMainWindow):
+    def closeEvent(self,event):
+        result = QtGui.QMessageBox.question(self,
+                      "Confirm Exit...",
+                      "Are you sure you want to exit ?",
+                      QtGui.QMessageBox.Yes| QtGui.QMessageBox.No)
+        event.ignore()
+
+        if result == QtGui.QMessageBox.Yes:
+            event.accept()
 
 def odomsub(data):
     x=data.pose.pose.position.x
