@@ -8,7 +8,7 @@ from signup import Ui_Signup
 
 from geometry_msgs.msg import Twist
 from nav_msgs.msg import Odometry
-from dprm.msg import dprm
+from motar_mini.msg import dprm
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMessageBox
