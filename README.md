@@ -5,7 +5,7 @@ For motar main model : https://github.com/mertwlf/MOTAR
 
 Rviz Launching:
 
-    $ roslaunch motar_mini motarmini_rviz.launch model:=motar_mini.urdf
+    $ roslaunch motar_mini motar_rviz_amcl.launch
     
 Gazebo Launching:
 
