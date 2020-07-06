@@ -42,13 +42,13 @@ Requirements:
 
 First Launch Gazebo:
 
-        $ roslaunch motar_mini motar_with_map.launch
+    $ roslaunch motar_mini motar_with_map.launch
 Then Launch SLAM:
 
-        $ roslaunch motar_mini motarmini_slam.launch
+    $ roslaunch motar_mini motarmini_slam.launch
 Then Launch Rviz:
 
-        $ roslaunch motar_mini motar_rviz_amcl.launch
+    $ roslaunch motar_mini motar_rviz_amcl.launch
 
 ------------------------------------------------------------------------------------------
 # motar_mini v0.4
