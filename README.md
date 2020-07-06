@@ -40,9 +40,15 @@ Requirements:
         $ git clone https://github.com/ros-perception/slam_gmapping.git -b melodic-devel
         $ catkin_make
 
-SLAM Launching:
+First Launch Gazebo:
+
+        $ roslaunch motar_mini motar_with_map.launch
+Then Launch SLAM:
 
         $ roslaunch motar_mini motarmini_slam.launch
+Then Launch Rviz:
+
+        $ roslaunch motar_mini motar_rviz_amcl.launch
 
 ------------------------------------------------------------------------------------------
 # motar_mini v0.4
@@ -53,9 +59,12 @@ SLAM Launching:
 First Launch Gazebo:
 
     $ roslaunch motar_mini motar_with_map.launch
-Then Launch Rviz amcl launch file:
+Then Launch amcl launch file:
 
     $ roslaunch motar_mini amcl.launch
+Then Launch Rviz:
+
+    $ roslaunch motar_mini motar_rviz_amcl.launch
 ------------------------------------------------------------------------------------------
 # motar_mini v0.5
 -----------------------------
@@ -67,7 +76,7 @@ Then Launch Rviz amcl launch file:
 First Do a catkin_make,
 Then open The file with no extension that is named Interface in the Folder motar_mini/scripts/Interface
 
-If you want to open the interface from a python file open terminal in the Interface Folder and type:
+If you want to open the interface from a python file open a terminal in the Interface Folder and type:
 
     python login.py
 
