@@ -21,8 +21,8 @@ Requirements:
 - In order for the sensors to work properly, "gazebo_ros_pkgs" files must be downloaded.
 
         $ cd ~/catkin_ws/src
-        $ git clone https://github.com/ros-simulation/gazebo_ros_pkgs.git -b melodic-devel #if you're on ubuntu 18.04
-        $ git clone https://github.com/ros-simulation/gazebo_ros_pkgs.git -b kinetic-devel #if you're on ubuntu 16.04
+        $ git clone https://github.com/ros-simulation/gazebo_ros_pkgs.git -b melodic-devel #on ubuntu 18.04
+        $ git clone https://github.com/ros-simulation/gazebo_ros_pkgs.git -b kinetic-devel #on ubuntu 16.04
         $ catkin_make
 
 ----------------------------------------------------------------------------------
@@ -38,8 +38,8 @@ Requirements:
 - In order for the SLAM to work, "slam_gmapping" package must be downloaded.
     
         $ cd ~/catkin_ws/src
-        $ git clone https://github.com/ros-perception/slam_gmapping.git -b melodic-devel #if you're on ubuntu 18.04
-        $ git clone https://github.com/ros-perception/slam_gmapping.git -b kinetic-devel #if you're on ubuntu 16.04
+        $ git clone https://github.com/ros-perception/slam_gmapping.git -b melodic-devel #on ubuntu 18.04
+        $ git clone https://github.com/ros-perception/slam_gmapping.git -b kinetic-devel #on ubuntu 16.04
         $ catkin_make
 
 First Launch Gazebo:
@@ -91,5 +91,3 @@ Mertcan KURT
 Burak KARGACI
 
 Yeter ATEŞ
-
-Musa ERTUĞRUL
