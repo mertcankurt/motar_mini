@@ -61,12 +61,13 @@ Then Launch Rviz:
 First Launch Gazebo:
 
     $ roslaunch motar_mini motar_with_map.launch
-Then Launch amcl launch file:
-
-    $ roslaunch motar_mini amcl.launch
 Then Launch Rviz:
 
     $ roslaunch motar_mini motar_rviz_amcl.launch
+Then Launch amcl launch file:
+
+    $ roslaunch motar_mini amcl.launch
+
 ------------------------------------------------------------------------------------------
 # motar_mini v0.5
 -----------------------------
