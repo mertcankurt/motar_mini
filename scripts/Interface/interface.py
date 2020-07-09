@@ -622,22 +622,26 @@ class Ui_MainWindow(object):
     
     def setPRM(self,patient,room,medicine):
         if room==1:
-            self.sendRobot(10,10,0,patient,room,medicine)
+            self.sendRobot(-4,9.7,0,0,0,-0.25,0.96,patient,room,medicine)
         elif room==2:
-            self.sendRobot(20,20,0,patient,room,medicine)
+            self.sendRobot(-11,-5,0,0,0,0.7,-0.7,patient,room,medicine)
         elif room==3:
-            self.sendRobot(30,30,0,patient,room,medicine)
+            self.sendRobot(-4,-5,0,0,0,-1,0,patient,room,medicine)
         else:
-            self.sendRobot(40,40,0,patient,room,medicine)
+            self.sendRobot(-11,-9,0,0,0,0.7,0.7,patient,room,medicine)
             
-    def sendRobot(self,x,y,z,p,r,m):
+    def sendRobot(self,x,y,z,ox,oy,oz,ow,p,r,m):
         rospy.init_node('motar_interface')
         point_pub = rospy.Publisher("motar_mini/dprm", dprm, queue_size=10)
         dest=dprm()
         
-        dest.destination.x=x
-        dest.destination.y=y
-        dest.destination.z=z
+        dest.destination.position.x=x
+        dest.destination.position.y=y
+        dest.destination.position.z=z
+        dest.destination.orientation.x=ox
+        dest.destination.orientation.y=oy
+        dest.destination.orientation.z=oz
+        dest.destination.orientation.w=ow
         dest.patient=p
         dest.room=r
         dest.medicine=m
@@ -657,21 +661,24 @@ class Ui_MainWindow(object):
         self.status.setText(text)
         
     def control(self,x,th):
-        rospy.init_node('motar_interface')
-        velocity_pub = rospy.Publisher('cmd_vel', Twist, queue_size = 10)
-        control_speed = 0
-        control_turn = 0
-        twist = Twist()
-        target_speed = (float(self.speedslider.value()) * x)/100
-        target_turn = th
-        control_speed = target_speed
-        control_turn = target_turn
-    
-        twist.linear.x=control_speed
-        twist.angular.z=control_turn
-
-        velocity_pub.publish(twist)
+        try:
+            rospy.init_node('motar_interface')
+            velocity_pub = rospy.Publisher('cmd_vel', Twist, queue_size = 10)
+            control_speed = 0
+            control_turn = 0
+            twist = Twist()
+            target_speed = (float(self.speedslider.value()) * x)/100
+            target_turn = th
+            control_speed = target_speed
+            control_turn = target_turn
         
+            twist.linear.x=control_speed
+            twist.angular.z=control_turn
+
+            velocity_pub.publish(twist)
+        except Exception as err:
+            print(err)
+
     def ReturnBase(self):
         self.DE=np.delete(self.DE, np.s_[::1])
         self.sendRobot(0,0,0,0,0,"")
@@ -700,20 +707,21 @@ class Ui_MainWindow(object):
             sys.exit()
     
 def odomsub(data):
-    x=data.pose.pose.position.x
-    y=data.pose.pose.position.y
-    z=data.pose.pose.position.z
-    
-    text="("+"%.5f" % x+", "+"%.5f" % y+", "+"%.5f" % z+")"
-    
-    ui.xyzpose.setText(text)
+    try:
+        pose=data.pose.pose.position
+        
+        text="("+"%.3f" % pose.x+", "+"%.3f" % pose.y+", "+"%.3f" % pose.z+")"
+        
+        ui.xyzpose.setText(text)
+    except Exception as err:
+        print(err)        
         
 if __name__ == "__main__":
     import sys
     rospy.init_node('motar_interface')
     velocity_pub = rospy.Publisher('cmd_vel', Twist, queue_size = 10)
     point_pub = rospy.Publisher("motar_mini/dprm", dprm, queue_size=10)
-    odom_sub = rospy.Subscriber("/odom",Odometry,odomsub)
+    odom_sub = rospy.Subscriber("odom",Odometry,odomsub)
     #velocity_sub =rospy.Subscriber('motar/point',Point, velocitysub)
 
     app = QtWidgets.QApplication(sys.argv)

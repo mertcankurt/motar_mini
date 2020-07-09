@@ -8,15 +8,10 @@
 
   <link name="base_link">
     <inertial>
-      <origin xyz="0.153101189860761 -0.0850000565633284 0.108422326628583" rpy="0 0 0" />
+      <origin xyz="0.0011012 -5.6563E-08 0.10842" rpy="0 0 0" />
       <mass value="3" />
-      <inertia
-        ixx="0.00759545820776308"
-        ixy="1.97760419726927E-09"
-        ixz="0.000232347400270981"
-        iyy="0.0124931975262406"
-        iyz="-4.39398457251671E-10"
-        izz="0.0148889510280612" />
+      <inertia ixx="0.0075955" ixy="1.9776E-09" ixz="0.00023235"
+       iyy="0.012493" iyz="-4.394E-10" izz="0.014889" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
@@ -24,7 +19,7 @@
         <mesh filename="package://motar_mini/meshes/base_link.STL" />
       </geometry>
       <material name="">
-        <color rgba="0.968627450980392 0.258823529411765 0.258823529411765 1" />
+        <color rgba="0.96863 0.25882 0.25882 1" />
       </material>
     </visual>
     <collision>
