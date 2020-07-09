@@ -68,7 +68,11 @@ class GoToPose():
     def shutdown(self):
         if self.goal_sent:
             self.move_base.cancel_goal()
+<<<<<<< HEAD
         #rospy.loginfo("Stop")
+=======
+        rospy.loginfo("Stop")
+>>>>>>> 244be58827532844a99b053d9f15e62fba7c6915
         #rospy.sleep(1)
 
 def dprmsub(data):
@@ -107,22 +111,33 @@ def main():
                 temp=q.popleft()
                 x=temp[0]
                 y=temp[1]
+<<<<<<< HEAD
                 ox=temp[2]
                 oy=temp[3]
                 oz=temp[4]
                 ow=temp[5]
                 position = {'x': x, 'y' : y}
                 quaternion = {'r1' : ox, 'r2' : oy, 'r3' : oz, 'r4' : ow}
+=======
+                position = {'x': x, 'y' : y}
+                quaternion = {'r1' : 0.000, 'r2' : 0.000, 'r3' : 0.000, 'r4' : -1.000}
+>>>>>>> 244be58827532844a99b053d9f15e62fba7c6915
                 rospy.loginfo("Go to (%s, %s) pose", position['x'], position['y'])
                 success = navigator.goto(position, quaternion)
                 if (success) :
                     rospy.loginfo("I'm here now... (%s, %s) pose", position['x'], position['y'])
                 else:
                     rospy.loginfo("The base failed to reach the desired pose")
+<<<<<<< HEAD
                 time.sleep(3)
             # Sleep to give the last log messages time to be sent
             rospy.sleep(1)
             
+=======
+
+            # Sleep to give the last log messages time to be sent
+            rospy.sleep(1)
+>>>>>>> 244be58827532844a99b053d9f15e62fba7c6915
     except rospy.ROSInterruptException:
         rospy.loginfo("Ctrl-C caught. Quitting")
         doRun=False
@@ -138,4 +153,8 @@ if __name__ == '__main__':
         main()
 
 
+<<<<<<< HEAD
     
+=======
+    
+>>>>>>> 244be58827532844a99b053d9f15e62fba7c6915

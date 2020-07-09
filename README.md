@@ -1,7 +1,7 @@
 # motar_mini v0.1
 The motar_mini robot package is designed as a sub-version of the "Medical Autonomous Carrying Robot" main model. ROS Melodic is compatible.
 
-For motar main model : https://github.com/mertwlf/MOTAR
+For motar main model : https://github.com/mertcankurt/MOTAR
 
 Rviz Launching:
 
@@ -21,7 +21,8 @@ Requirements:
 - In order for the sensors to work properly, "gazebo_ros_pkgs" files must be downloaded.
 
         $ cd ~/catkin_ws/src
-        $ git clone https://github.com/ros-simulation/gazebo_ros_pkgs.git -b melodic-devel
+        $ git clone https://github.com/ros-simulation/gazebo_ros_pkgs.git -b melodic-devel #on ubuntu 18.04
+        $ git clone https://github.com/ros-simulation/gazebo_ros_pkgs.git -b kinetic-devel #on ubuntu 16.04
         $ catkin_make
 
 ----------------------------------------------------------------------------------
@@ -37,7 +38,8 @@ Requirements:
 - In order for the SLAM to work, "slam_gmapping" package must be downloaded.
     
         $ cd ~/catkin_ws/src
-        $ git clone https://github.com/ros-perception/slam_gmapping.git -b melodic-devel
+        $ git clone https://github.com/ros-perception/slam_gmapping.git -b melodic-devel #on ubuntu 18.04
+        $ git clone https://github.com/ros-perception/slam_gmapping.git -b kinetic-devel #on ubuntu 16.04
         $ catkin_make
 
 First Launch Gazebo:
@@ -59,12 +61,13 @@ Then Launch Rviz:
 First Launch Gazebo:
 
     $ roslaunch motar_mini motar_with_map.launch
-Then Launch amcl launch file:
-
-    $ roslaunch motar_mini amcl.launch
 Then Launch Rviz:
 
     $ roslaunch motar_mini motar_rviz_amcl.launch
+Then Launch amcl launch file:
+
+    $ roslaunch motar_mini amcl.launch
+
 ------------------------------------------------------------------------------------------
 # motar_mini v0.5
 -----------------------------
@@ -89,5 +92,3 @@ Mertcan KURT
 Burak KARGACI
 
 Yeter ATEŞ
-
-Musa ERTUĞRUL
