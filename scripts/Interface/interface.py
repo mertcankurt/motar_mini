@@ -11,6 +11,7 @@ from motar_mini.msg import dprm
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import (QMessageBox)
+from actionlib.msg import TestAction, TestGoal
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -22,14 +23,14 @@ class Ui_MainWindow(object):
         self.S = np.array([])
         self.Text=np.array([])
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1300, 570)
+        MainWindow.resize(1149, 453)
         MainWindow.setAutoFillBackground(False)
         MainWindow.setStyleSheet("QMainWindow{background-color: rgb(52, 101, 164);}")
         MainWindow.setTabShape(QtWidgets.QTabWidget.Rounded)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.gridLayout_3 = QtWidgets.QGridLayout(self.centralwidget)
-        self.gridLayout_3.setObjectName("gridLayout_3")
+        self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.centralwidget)
+        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
         self.verticalLayout_8 = QtWidgets.QVBoxLayout()
         self.verticalLayout_8.setObjectName("verticalLayout_8")
         self.groupBox = QtWidgets.QGroupBox(self.centralwidget)
@@ -163,7 +164,7 @@ class Ui_MainWindow(object):
         self.medlabel.setObjectName("medlabel")
         self.verticalLayout_6.addWidget(self.medlabel)
         self.med1 = QtWidgets.QComboBox(self.centralwidget)
-        self.med1.setMinimumSize(QtCore.QSize(145, 25))
+        self.med1.setMinimumSize(QtCore.QSize(0, 0))
         self.med1.setMaximumSize(QtCore.QSize(145, 30))
         self.med1.setStyleSheet("background-color: rgb(78, 239, 191);")
         self.med1.setObjectName("med1")
@@ -174,7 +175,7 @@ class Ui_MainWindow(object):
         self.med1.addItem("")
         self.verticalLayout_6.addWidget(self.med1)
         self.med2 = QtWidgets.QComboBox(self.centralwidget)
-        self.med2.setMinimumSize(QtCore.QSize(145, 25))
+        self.med2.setMinimumSize(QtCore.QSize(0, 0))
         self.med2.setMaximumSize(QtCore.QSize(145, 30))
         self.med2.setStyleSheet("background-color: rgb(78, 239, 191);")
         self.med2.setObjectName("med2")
@@ -185,7 +186,7 @@ class Ui_MainWindow(object):
         self.med2.addItem("")
         self.verticalLayout_6.addWidget(self.med2)
         self.med3 = QtWidgets.QComboBox(self.centralwidget)
-        self.med3.setMinimumSize(QtCore.QSize(145, 25))
+        self.med3.setMinimumSize(QtCore.QSize(0, 0))
         self.med3.setMaximumSize(QtCore.QSize(145, 30))
         self.med3.setStyleSheet("background-color: rgb(78, 239, 191);")
         self.med3.setObjectName("med3")
@@ -196,7 +197,7 @@ class Ui_MainWindow(object):
         self.med3.addItem("")
         self.verticalLayout_6.addWidget(self.med3)
         self.med4 = QtWidgets.QComboBox(self.centralwidget)
-        self.med4.setMinimumSize(QtCore.QSize(145, 25))
+        self.med4.setMinimumSize(QtCore.QSize(0, 0))
         self.med4.setMaximumSize(QtCore.QSize(145, 30))
         self.med4.setStyleSheet("background-color: rgb(78, 239, 191);")
         self.med4.setObjectName("med4")
@@ -219,14 +220,26 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.sendbtn.setFont(font)
-        self.sendbtn.setStyleSheet("background-color: rgb(136, 138, 133);")
+        self.sendbtn.setStyleSheet("background-color: rgb(0, 85, 255);")
         self.sendbtn.setObjectName("sendbtn")
         self.horizontalLayout.addWidget(self.sendbtn)
-        spacerItem1 = QtWidgets.QSpacerItem(150, 20, QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Minimum)
+        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem1)
+        self.delbtn = QtWidgets.QPushButton(self.centralwidget)
+        self.delbtn.setMinimumSize(QtCore.QSize(120, 50))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.delbtn.setFont(font)
+        self.delbtn.setStyleSheet("background-color: rgb(180, 0, 0);")
+        self.delbtn.setObjectName("delbtn")
+        self.horizontalLayout.addWidget(self.delbtn)
+        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem2)
         self.verticalLayout_7.addLayout(self.horizontalLayout)
         self.verticalLayout_8.addLayout(self.verticalLayout_7)
-        self.gridLayout_3.addLayout(self.verticalLayout_8, 0, 0, 1, 1)
+        self.horizontalLayout_4.addLayout(self.verticalLayout_8)
         self.robotmvmtgroupbox = QtWidgets.QGroupBox(self.centralwidget)
         self.robotmvmtgroupbox.setStyleSheet("")
         self.robotmvmtgroupbox.setObjectName("robotmvmtgroupbox")
@@ -234,6 +247,27 @@ class Ui_MainWindow(object):
         self.gridLayout_2.setObjectName("gridLayout_2")
         self.gridLayout = QtWidgets.QGridLayout()
         self.gridLayout.setObjectName("gridLayout")
+        self.statuslabel = QtWidgets.QLabel(self.robotmvmtgroupbox)
+        self.statuslabel.setObjectName("statuslabel")
+        self.gridLayout.addWidget(self.statuslabel, 3, 0, 1, 1)
+        self.status = QtWidgets.QLineEdit(self.robotmvmtgroupbox)
+        self.status.setReadOnly(True)
+        self.status.setObjectName("status")
+        self.gridLayout.addWidget(self.status, 3, 1, 1, 1)
+        self.xyzlabel = QtWidgets.QLabel(self.robotmvmtgroupbox)
+        self.xyzlabel.setObjectName("xyzlabel")
+        self.gridLayout.addWidget(self.xyzlabel, 1, 0, 1, 1)
+        self.destinationpose = QtWidgets.QLineEdit(self.robotmvmtgroupbox)
+        self.destinationpose.setReadOnly(True)
+        self.destinationpose.setObjectName("destinationpose")
+        self.gridLayout.addWidget(self.destinationpose, 2, 1, 1, 1)
+        self.xyzpose = QtWidgets.QLineEdit(self.robotmvmtgroupbox)
+        self.xyzpose.setReadOnly(True)
+        self.xyzpose.setObjectName("xyzpose")
+        self.gridLayout.addWidget(self.xyzpose, 1, 1, 1, 1)
+        self.destinationlabel = QtWidgets.QLabel(self.robotmvmtgroupbox)
+        self.destinationlabel.setObjectName("destinationlabel")
+        self.gridLayout.addWidget(self.destinationlabel, 2, 0, 1, 1)
         self.robotpose = QtWidgets.QLabel(self.robotmvmtgroupbox)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.MinimumExpanding)
         sizePolicy.setHorizontalStretch(0)
@@ -248,36 +282,15 @@ class Ui_MainWindow(object):
         self.robotpose.setScaledContents(True)
         self.robotpose.setObjectName("robotpose")
         self.gridLayout.addWidget(self.robotpose, 0, 0, 1, 2)
-        self.xyzlabel = QtWidgets.QLabel(self.robotmvmtgroupbox)
-        self.xyzlabel.setObjectName("xyzlabel")
-        self.gridLayout.addWidget(self.xyzlabel, 1, 0, 1, 1)
-        self.xyzpose = QtWidgets.QLineEdit(self.robotmvmtgroupbox)
-        self.xyzpose.setReadOnly(True)
-        self.xyzpose.setObjectName("xyzpose")
-        self.gridLayout.addWidget(self.xyzpose, 1, 1, 1, 1)
-        self.destinationlabel = QtWidgets.QLabel(self.robotmvmtgroupbox)
-        self.destinationlabel.setObjectName("destinationlabel")
-        self.gridLayout.addWidget(self.destinationlabel, 2, 0, 1, 1)
-        self.destinationpose = QtWidgets.QLineEdit(self.robotmvmtgroupbox)
-        self.destinationpose.setReadOnly(True)
-        self.destinationpose.setObjectName("destinationpose")
-        self.gridLayout.addWidget(self.destinationpose, 2, 1, 1, 1)
-        self.statuslabel = QtWidgets.QLabel(self.robotmvmtgroupbox)
-        self.statuslabel.setObjectName("statuslabel")
-        self.gridLayout.addWidget(self.statuslabel, 3, 0, 1, 1)
-        self.status = QtWidgets.QLineEdit(self.robotmvmtgroupbox)
-        self.status.setReadOnly(True)
-        self.status.setObjectName("status")
-        self.gridLayout.addWidget(self.status, 3, 1, 1, 1)
         self.gridLayout_2.addLayout(self.gridLayout, 0, 0, 1, 1)
-        self.gridLayout_3.addWidget(self.robotmvmtgroupbox, 0, 1, 1, 1)
+        self.horizontalLayout_4.addWidget(self.robotmvmtgroupbox)
         self.verticalLayout_3 = QtWidgets.QVBoxLayout()
         self.verticalLayout_3.setSpacing(0)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.horizontalLayout_7 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_7.setObjectName("horizontalLayout_7")
-        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_7.addItem(spacerItem2)
+        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_7.addItem(spacerItem3)
         self.SaExit = QtWidgets.QPushButton(self.centralwidget)
         self.SaExit.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.SaExit.setObjectName("SaExit")
@@ -391,15 +404,13 @@ class Ui_MainWindow(object):
         self.takemancontrol.setObjectName("takemancontrol")
         self.returnbase = QtWidgets.QPushButton(self.controlbtnsplitter)
         self.returnbase.setMaximumSize(QtCore.QSize(80, 80))
-        self.returnbase.setStyleSheet("\n" "background-color: rgb(115, 210, 22);")
+        self.returnbase.setStyleSheet("\n"
+"background-color: rgb(115, 210, 22);")
         self.returnbase.setObjectName("returnbase")
         self.horizontalLayout_3.addWidget(self.splitter_5)
         self.verticalLayout_3.addWidget(self.mancongrpbox)
-        self.gridLayout_3.addLayout(self.verticalLayout_3, 0, 2, 1, 1)
+        self.horizontalLayout_4.addLayout(self.verticalLayout_3)
         MainWindow.setCentralWidget(self.centralwidget)
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
-        self.statusbar.setObjectName("statusbar")
-        MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
         self.spinBox.valueChanged['int'].connect(self.speedslider.setValue)
@@ -434,7 +445,7 @@ class Ui_MainWindow(object):
         MainWindow.setTabOrder(self.speedslider, self.xyzpose)
         MainWindow.setTabOrder(self.xyzpose, self.destinationpose)
         MainWindow.setTabOrder(self.destinationpose, self.status)
-        
+
         #Manual Control Buttons Disabled 
         self.is_man_control(0)
         #Manual Control Codes 
@@ -460,10 +471,11 @@ class Ui_MainWindow(object):
         self.takemancontrol.clicked.connect(lambda: self.is_man_control(1))
         self.takemancontrol.clicked.connect(lambda: self.combopressed(0))
         self.returnbase.clicked.connect(lambda: self.ReturnBase())
-        self.returnbase.clicked.connect(lambda: self.combopressed(0))
+        #self.returnbase.clicked.connect(lambda: self.combopressed(0))
         self.sendbtn.clicked.connect(lambda: self.combopressed(1))
         self.SaExit.clicked.connect(lambda: self.SAE())
-        
+        self.delbtn.clicked.connect(self.delbtnclicked)
+
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MOTAR Interface"))
@@ -532,10 +544,11 @@ class Ui_MainWindow(object):
         self.med4.setItemText(3, _translate("MainWindow", "C"))
         self.med4.setItemText(4, _translate("MainWindow", "D"))
         self.sendbtn.setText(_translate("MainWindow", "SEND"))
+        self.delbtn.setText(_translate("MainWindow", "DEL LAST LOC"))
         self.robotmvmtgroupbox.setTitle(_translate("MainWindow", "Robot Movement"))
+        self.statuslabel.setText(_translate("MainWindow", "status"))
         self.xyzlabel.setText(_translate("MainWindow", "current pose"))
         self.destinationlabel.setText(_translate("MainWindow", "destination"))
-        self.statuslabel.setText(_translate("MainWindow", "status"))
         self.SaExit.setText(_translate("MainWindow", "Save and Exit"))
         self.logbox.setTitle(_translate("MainWindow", "LOGS"))
         self.mancongrpbox.setTitle(_translate("MainWindow", "Manual Controls"))
@@ -550,7 +563,7 @@ class Ui_MainWindow(object):
         self.downrightbutton.setText(_translate("MainWindow", "DR"))
         self.takemancontrol.setText(_translate("MainWindow", "Take\n" "Manual\n" "Control"))
         self.returnbase.setText(_translate("MainWindow", "Return\n" "Base"))
-        
+
     def is_man_control(self,x):
         if x==1:   
             self.Upbutton.setEnabled(True)
@@ -589,23 +602,26 @@ class Ui_MainWindow(object):
         x,y,z,t=self.selected()
         if a==1:
             self.is_man_control(0)
-            self.clicked("Delivering Medicine")
             if x!=1:
+                self.clicked("Delivering Medicine")
                 text = ("for patient "+self.patient1.currentText()+" in room "+self.room1.currentText()+" medicine "+self.med1.currentText())
                 self.Text=np.append(self.Text, text)
                 self.list.addItem(text+" is being sent.")
                 self.setPRM(int(self.patient1.currentText()), int(self.room1.currentText()), self.med1.currentText())
             if y!=2:
+                self.clicked("Delivering Medicine")
                 text = ("for patient "+self.patient2.currentText()+" in room "+self.room2.currentText()+" medicine "+self.med2.currentText())
                 self.Text=np.append(self.Text, text)
                 self.list.addItem(text+" is being sent.")
                 self.setPRM(int(self.patient2.currentText()), int(self.room2.currentText()), self.med2.currentText())
             if z!=3:
+                self.clicked("Delivering Medicine")
                 text = ("for patient "+self.patient3.currentText()+" in room "+self.room3.currentText()+" medicine "+self.med3.currentText())
                 self.Text=np.append(self.Text, text)
                 self.list.addItem(text+" is being sent.")
                 self.setPRM(int(self.patient3.currentText()), int(self.room3.currentText()), self.med3.currentText())
             if t!=4:
+                self.clicked("Delivering Medicine")
                 text = ("for patient "+self.patient4.currentText()+" in room "+self.room4.currentText()+" medicine "+self.med4.currentText())
                 self.Text=np.append(self.Text, text)
                 self.list.addItem(text+" is being sent.")
@@ -613,7 +629,7 @@ class Ui_MainWindow(object):
         if a==0:
             if len(self.Text)>0:
                 r=len(self.Text)
-                for i in range(r): 
+                for i in range(r-1): 
                     text = self.Text[r-i-1]+" sending process has been aborted."
                     self.list.addItem(text)
                     self.Text=np.delete(self.Text, -1)
@@ -627,8 +643,13 @@ class Ui_MainWindow(object):
             self.sendRobot(-11,-5,0,0,0,0.7,-0.7,patient,room,medicine)
         elif room==3:
             self.sendRobot(-4,-5,0,0,0,-1,0,patient,room,medicine)
-        else:
+        elif room==4: 
             self.sendRobot(-11,-9,0,0,0,0.7,0.7,patient,room,medicine)
+        elif room==5:
+            self.sendRobot(0,0,0,0,0,0,-1,patient,room,medicine)
+        elif room==6:
+            self.sendRobot(0,0,0,0,0,0,-1,patient,room,medicine)
+            
             
     def sendRobot(self,x,y,z,ox,oy,oz,ow,p,r,m):
         rospy.init_node('motar_interface')
@@ -674,17 +695,30 @@ class Ui_MainWindow(object):
         
             twist.linear.x=control_speed
             twist.angular.z=control_turn
-
             velocity_pub.publish(twist)
+
         except Exception as err:
             print(err)
 
     def ReturnBase(self):
-        self.DE=np.delete(self.DE, np.s_[::1])
-        self.sendRobot(0,0,0,0,0,"")
-        self.clicked("Returning to Base Point")
-        self.is_man_control(0)
+        if len(self.Text)>0:
+                r=len(self.Text)
+                for i in range(r-1): 
+                    text = self.Text[r-i-1]+" sending process has been aborted."
+                    self.list.addItem(text)
+                    self.Text=np.delete(self.Text, -1)
+        patient=1
+        room=5
+        medicine="none"
+        self.setPRM(patient,room,medicine)
+        if len(self.DE)>1:
+            self.DE=np.delete(self.DE, np.s_[1:])
+            text="(0, 0, 0)"
+            self.DE=np.append(self.DE,text)
         self.destinationpose.setText(str(self.DE))
+        self.clicked("Return to Base Point After Delivering The Last Medicine")
+        self.is_man_control(0)
+        
     
     def SAE(self):
         msg= QMessageBox()
@@ -699,12 +733,25 @@ class Ui_MainWindow(object):
                     "Room": self.R, 
                     "Medicine": self.M,
                     "Destination": self.D,
-                    "Status": self.S};
+                    "Status": self.S}
             df= pd.DataFrame(data)
             df.to_excel('Hospital_data.xlsx', sheet_name='Hospital_data',columns=["Patient","Room","Medicine","Destination","Status"])
             sys.exit()
         if ret==QMessageBox.No:
             sys.exit()
+
+    def delbtnclicked(self):
+        patient=1
+        room=6
+        medicine="none"
+        self.setPRM(patient,room,medicine)
+        self.DE=np.delete(self.DE, np.s_[-1])
+        self.destinationpose.setText(str(self.DE))
+        if len(self.Text)>0:
+                r=len(self.Text)
+                text = self.Text[r-1]+" sending process has been aborted."
+                self.list.addItem(text)
+                self.Text=np.delete(self.Text, -1)
     
 def odomsub(data):
     try:
@@ -715,13 +762,33 @@ def odomsub(data):
         ui.xyzpose.setText(text)
     except Exception as err:
         print(err)        
-        
+
+def goalsub(data):
+    g=data.goal
+    if g==1:
+        ui.DE=ui.DE[1:]
+        ui.destinationpose.setText(str(ui.DE))
+        if len(ui.Text)>0:
+            text = ui.Text[0]+" is successfully sent."
+            ui.list.addItem(text)
+            ui.Text=np.delete(ui.Text, 0)
+    if g==-1:
+        ui.DE=np.delete(ui.DE, np.s_[::1])
+        ui.destinationpose.setText(str(ui.DE))
+        if len(ui.Text)>0:
+                r=len(ui.Text)
+                for i in range(r): 
+                    text = ui.Text[r-i-1]+" sending process has been aborted."
+                    ui.list.addItem(text)
+                    ui.Text=np.delete(ui.Text, -1)
+
 if __name__ == "__main__":
     import sys
     rospy.init_node('motar_interface')
     velocity_pub = rospy.Publisher('cmd_vel', Twist, queue_size = 10)
     point_pub = rospy.Publisher("motar_mini/dprm", dprm, queue_size=10)
     odom_sub = rospy.Subscriber("odom",Odometry,odomsub)
+    goal_sub = rospy.Subscriber('is_dest', TestGoal,goalsub)
     #velocity_sub =rospy.Subscriber('motar/point',Point, velocitysub)
 
     app = QtWidgets.QApplication(sys.argv)
