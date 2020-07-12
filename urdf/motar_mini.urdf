@@ -9,7 +9,7 @@
   <link name="base_link">
     <inertial>
       <origin xyz="0.0011012 -5.6563E-08 0.10842" rpy="0 0 0" />
-      <mass value="3" />
+      <mass value="5" />
       <inertia ixx="0.0075955" ixy="1.9776E-09" ixz="0.00023235"
        iyy="0.012493" iyz="-4.394E-10" izz="0.014889" />
     </inertial>
@@ -36,7 +36,7 @@
   <link name="SWheelbase">
     <inertial>
       <origin xyz="2.7426E-09 -1.1481E-10 -0.0016836" rpy="0 0 0" />
-      <mass  value="0.2" />
+      <mass  value="0.5" />
       <inertia
         ixx="1.4785E-07"
         ixy="-3.9067E-21"
@@ -106,7 +106,7 @@
   <link name="SWheel">
     <inertial>
       <origin xyz="1.2147E-06 1.96E-07 8.0438E-07" rpy="0 0 0" />
-      <mass value="1" />
+      <mass value="0.5" />
       <inertia ixx="4.3731E-07" ixy="-4.6068E-10" ixz="-4.0444E-11"
         iyy="7.3808E-07" iyz="-7.0587E-12" izz="4.3734E-07" />
     </inertial>
@@ -212,7 +212,7 @@
   <link name="Dolap">
     <inertial>
       <origin xyz="-0.0038285 0.0010421 0.23126" rpy="0 0 0" />
-      <mass value="5" />
+      <mass value="10" />
       <inertia
         ixx="0.04108"
         ixy="8.4741E-06"
@@ -249,7 +249,7 @@
   <link name="SL">
     <inertial>
       <origin xyz="-0.11671 0.11418 -4.9387E-05" rpy="0 0 0" />
-      <mass value="0.2" />
+      <mass value="2" />
       <inertia
         ixx="1.74E-07"
         ixy="-3.9565E-10"
@@ -286,7 +286,7 @@
   <link name="SF">
     <inertial>
       <origin xyz="-0.0024954 -1.8887E-05 4.9385E-05" rpy="0 0 0" />
-      <mass value="0.2" />
+      <mass value="2" />
       <inertia
         ixx="9.3681E-07"
         ixy="-3.9566E-10"
@@ -323,7 +323,7 @@
   <link name="SR">
     <inertial>
       <origin xyz="-0.11667 -0.11418 4.9387E-05" rpy="0 0 0" />
-      <mass value="0.2" />
+      <mass value="2" />
       <inertia
         ixx="1.74E-07"
         ixy="3.9565E-10"

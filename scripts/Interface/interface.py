@@ -647,8 +647,6 @@ class Ui_MainWindow(object):
             self.sendRobot(-11,-9,0,0,0,0.7,0.7,patient,room,medicine)
         elif room==5:
             self.sendRobot(0,0,0,0,0,0,-1,patient,room,medicine)
-        elif room==6:
-            self.sendRobot(0,0,0,0,0,0,-1,patient,room,medicine)
             
             
     def sendRobot(self,x,y,z,ox,oy,oz,ow,p,r,m):
@@ -744,8 +742,20 @@ class Ui_MainWindow(object):
         patient=1
         room=6
         medicine="none"
-        self.setPRM(patient,room,medicine)
-        self.DE=np.delete(self.DE, np.s_[-1])
+        dest=dprm()
+        dest.destination.position.x=0
+        dest.destination.position.y=0
+        dest.destination.position.z=0
+        dest.destination.orientation.x=0
+        dest.destination.orientation.y=0
+        dest.destination.orientation.z=0
+        dest.destination.orientation.w=-1
+        dest.patient=1
+        dest.room=6
+        dest.medicine="none"
+        point_pub.publish(dest)
+
+        self.DE=np.delete(self.DE, -1)
         self.destinationpose.setText(str(self.DE))
         if len(self.Text)>0:
                 r=len(self.Text)
@@ -772,6 +782,7 @@ def goalsub(data):
             text = ui.Text[0]+" is successfully sent."
             ui.list.addItem(text)
             ui.Text=np.delete(ui.Text, 0)
+        
     if g==-1:
         ui.DE=np.delete(ui.DE, np.s_[::1])
         ui.destinationpose.setText(str(ui.DE))

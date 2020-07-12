@@ -11,46 +11,53 @@ from operator import itemgetter
 LINX = 0.0 #Always forward linear velocity.
 PI = 3.14
 angz = 0
-
+L=0
+R=0
+F=0
 
 def SonarFScan(data):
+    global F
     global LINX
     global angz
     try:
-        x = data.range
-        if(x<=0.3):
-            LINX = LINX-0.2
-
-        
+        F = data.range
+        if(F<=0.3):
+            LINX = LINX/2 
+            if L-R<0.1:
+                angz= angz+0.1
     except Exception as err:
         print(err)
 
 def SonarLScan(data):
+    global L
     global angz
     try:
-        x = data.range
+        L = data.range
         
-        if(x<0.3):
-            angz= angz+0.2
+        if(L<0.3):
+            angz= angz+0.1
         else: angz=angz
     except Exception as err:
         print(err)
 
 def SonarRScan(data):
+    global R
     global angz
     try:
-        x = data.range
-        if(x<0.3):
-            angz= angz-0.2
+        R = data.range
+        if(R<0.3):
+            angz= angz-0.1
         else: 
             angz=angz
     except Exception as err:
         print(err)
+
 def VelScan(data):
     global angz
     global LINX
     LINX = data.linear.x
     angz = data.angular.z
+
 def main():
     
     rospy.init_node('listener', anonymous=True)
@@ -72,4 +79,7 @@ def main():
         rate.sleep()
 
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except rospy.ROSInterruptException:
+        rospy.loginfo("Ctrl-C caught. Quitting")
