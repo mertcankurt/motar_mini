@@ -404,7 +404,8 @@ class Ui_MainWindow(object):
         self.takemancontrol.setObjectName("takemancontrol")
         self.returnbase = QtWidgets.QPushButton(self.controlbtnsplitter)
         self.returnbase.setMaximumSize(QtCore.QSize(80, 80))
-        self.returnbase.setStyleSheet("\n" "background-color: rgb(115, 210, 22);")
+        self.returnbase.setStyleSheet("\n"
+"background-color: rgb(115, 210, 22);")
         self.returnbase.setObjectName("returnbase")
         self.horizontalLayout_3.addWidget(self.splitter_5)
         self.verticalLayout_3.addWidget(self.mancongrpbox)
