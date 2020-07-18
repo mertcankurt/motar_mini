@@ -601,6 +601,7 @@ class Ui_MainWindow(object):
         return x,y,z,t
     
     def combopressed(self,a):
+        global x
         x,y,z,t=self.selected()
         if a==1:
             self.is_man_control(0)
@@ -642,6 +643,11 @@ class Ui_MainWindow(object):
             point_pub.publish(dest)
 
             self.DE=np.delete(self.DE, np.s_[::1])
+            self.D=np.delete(self.D, np.s_[x:])
+            self.P=np.delete(self.P, np.s_[x:])
+            self.R=np.delete(self.R, np.s_[x:])
+            self.M=np.delete(self.M, np.s_[x:])
+            self.S=np.delete(self.S, np.s_[x:])
             
             self.destinationpose.setText(str(self.DE))
     
@@ -708,6 +714,7 @@ class Ui_MainWindow(object):
             print(err)
 
     def ReturnBase(self):
+        global x
         if len(self.Text)>0:
                 r=len(self.Text)
                 for i in range(r-1): 
@@ -719,7 +726,8 @@ class Ui_MainWindow(object):
         medicine="none"
         self.setPRM(patient,room,medicine)
         if len(self.DE)>1:
-            self.DE=np.delete(self.DE, np.s_[1:])
+            self.DE=np.delete(self.DE, np.s_[::1])
+            self.D=np.delete(self.D, np.s_[x:])
             self.P=np.delete(self.P, np.s_[x:])
             self.R=np.delete(self.R, np.s_[x:])
             self.M=np.delete(self.M, np.s_[x:])
@@ -728,7 +736,7 @@ class Ui_MainWindow(object):
             text="(0, 0, 0)"
             self.DE=np.append(self.DE,text)
         self.destinationpose.setText(str(self.DE))
-        self.clicked("Return to Base Point After Delivering The Last Medicine")
+        self.clicked("Returning to Base Point ")
         self.is_man_control(0)
         
     
@@ -744,7 +752,7 @@ class Ui_MainWindow(object):
             data = {"Patient": self.P, 
                     "Room": self.R, 
                     "Medicine": self.M,
-                    "Destination": self.DE,
+                    "Destination": self.D,
                     "Status": self.S}
             df= pd.DataFrame(data)
             df.to_excel('Hospital_data.xlsx', sheet_name='Hospital_data',columns=["Patient","Room","Medicine","Destination","Status"])
@@ -767,6 +775,7 @@ class Ui_MainWindow(object):
         point_pub.publish(dest)
 
         self.DE=np.delete(self.DE, -1)
+        self.D=np.delete(self.D, -1)
         self.P=np.delete(self.P, -1)
         self.R=np.delete(self.R, -1)
         self.M=np.delete(self.M, -1)
