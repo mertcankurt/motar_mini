@@ -24,6 +24,7 @@ pose=[]
 doRun=True
 x=0
 
+
 class GoToPose():
     def __init__(self):
 
@@ -82,6 +83,7 @@ class GoToPose():
 def dprmsub(data):
     global q
     global doRun
+    c=GoalID()
     if data.room>0:
         x=data.destination.position.x
         y=data.destination.position.y
@@ -93,14 +95,21 @@ def dprmsub(data):
         #r=data.room
         #m=data.medicine
         point=[x,y,ox,oy,oz,ow]
-        if data.room!=5 and data.room!=6:
+        if data.room<5:
             q.append(point) 
         elif data.room==5:
+            cancelpub.publish(c)
             q.clear()
             q.append(point) 
         elif data.room==6:
             q.pop()
-        
+        elif data.room==7:
+            try:
+                q.clear()
+                cancelpub.publish(c)
+            except (KeyboardInterrupt, SystemExit):
+                rospy.loginfo("Opening Manual Mode. Quitting")
+                doRun=False   
 
 def odom_sub(data):
     global pose
@@ -138,13 +147,14 @@ def main():
             # Sleep to give the last log messages time to be sent
             rospy.sleep(1)
             
-    except rospy.ROSInterruptException:
+    except (KeyboardInterrupt, SystemExit):
         rospy.loginfo("Ctrl-C caught. Quitting")
         doRun=False
 
 if __name__ == '__main__':
-    
+
         rospy.init_node('nav_test', anonymous=False)
+        cancelpub = rospy.Publisher('/move_base/cancel',GoalID, queue_size = 10)
         dprm_sub = rospy.Subscriber("motar_mini/dprm",dprm,dprmsub)
         dest_pub = rospy.Publisher('is_dest', TestGoal, queue_size = 10)
         odmsb = rospy.Subscriber('odom',Odometry,odom_sub)

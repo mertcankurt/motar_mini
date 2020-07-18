@@ -13,6 +13,8 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import (QMessageBox)
 from actionlib.msg import TestAction, TestGoal
 
+x=0
+
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         self.P = np.array([])
@@ -629,11 +631,18 @@ class Ui_MainWindow(object):
         if a==0:
             if len(self.Text)>0:
                 r=len(self.Text)
-                for i in range(r-1): 
+                for i in range(r): 
                     text = self.Text[r-i-1]+" sending process has been aborted."
                     self.list.addItem(text)
                     self.Text=np.delete(self.Text, -1)
+            dest=dprm()
+            dest.patient=1
+            dest.room=7
+            dest.medicine="none"
+            point_pub.publish(dest)
+
             self.DE=np.delete(self.DE, np.s_[::1])
+            
             self.destinationpose.setText(str(self.DE))
     
     def setPRM(self,patient,room,medicine):
@@ -711,6 +720,11 @@ class Ui_MainWindow(object):
         self.setPRM(patient,room,medicine)
         if len(self.DE)>1:
             self.DE=np.delete(self.DE, np.s_[1:])
+            self.P=np.delete(self.P, np.s_[x:])
+            self.R=np.delete(self.R, np.s_[x:])
+            self.M=np.delete(self.M, np.s_[x:])
+            self.S=np.delete(self.S, np.s_[x:])
+            
             text="(0, 0, 0)"
             self.DE=np.append(self.DE,text)
         self.destinationpose.setText(str(self.DE))
@@ -730,7 +744,7 @@ class Ui_MainWindow(object):
             data = {"Patient": self.P, 
                     "Room": self.R, 
                     "Medicine": self.M,
-                    "Destination": self.D,
+                    "Destination": self.DE,
                     "Status": self.S}
             df= pd.DataFrame(data)
             df.to_excel('Hospital_data.xlsx', sheet_name='Hospital_data',columns=["Patient","Room","Medicine","Destination","Status"])
@@ -753,6 +767,11 @@ class Ui_MainWindow(object):
         point_pub.publish(dest)
 
         self.DE=np.delete(self.DE, -1)
+        self.P=np.delete(self.P, -1)
+        self.R=np.delete(self.R, -1)
+        self.M=np.delete(self.M, -1)
+        self.S=np.delete(self.S, -1)
+
         self.destinationpose.setText(str(self.DE))
         if len(self.Text)>0:
                 r=len(self.Text)
@@ -771,14 +790,17 @@ def odomsub(data):
         print(err)        
 
 def goalsub(data):
+    global x
     g=data.goal
     if g==1:
         ui.DE=ui.DE[1:]
         ui.destinationpose.setText(str(ui.DE))
         if len(ui.Text)>0:
             text = ui.Text[0]+" is successfully sent."
+            ui.S[x]='Reached'
             ui.list.addItem(text)
             ui.Text=np.delete(ui.Text, 0)
+            x=x+1
         
     if g==-1:
         ui.DE=np.delete(ui.DE, np.s_[::1])
@@ -798,7 +820,6 @@ if __name__ == "__main__":
     odom_sub = rospy.Subscriber("odom",Odometry,odomsub)
     goal_sub = rospy.Subscriber('is_dest', TestGoal,goalsub)
     #velocity_sub =rospy.Subscriber('motar/point',Point, velocitysub)
-
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()

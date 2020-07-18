@@ -14,5 +14,4 @@
   <!-- Show in Rviz   -->
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find motar_mini)/amcl.rviz"/>
 
-
 </launch>
