@@ -13,7 +13,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import (QMessageBox)
 from actionlib.msg import TestAction, TestGoal
 
-x=0
+cntnum=0
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -601,7 +601,7 @@ class Ui_MainWindow(object):
         return x,y,z,t
     
     def combopressed(self,a):
-        global x
+        global cntnum
         x,y,z,t=self.selected()
         if a==1:
             self.is_man_control(0)
@@ -643,11 +643,11 @@ class Ui_MainWindow(object):
             point_pub.publish(dest)
 
             self.DE=np.delete(self.DE, np.s_[::1])
-            self.D=np.delete(self.D, np.s_[x:])
-            self.P=np.delete(self.P, np.s_[x:])
-            self.R=np.delete(self.R, np.s_[x:])
-            self.M=np.delete(self.M, np.s_[x:])
-            self.S=np.delete(self.S, np.s_[x:])
+            self.D=np.delete(self.D, np.s_[cntnum:])
+            self.P=np.delete(self.P, np.s_[cntnum:])
+            self.R=np.delete(self.R, np.s_[cntnum:])
+            self.M=np.delete(self.M, np.s_[cntnum:])
+            self.S=np.delete(self.S, np.s_[cntnum:])
             
             self.destinationpose.setText(str(self.DE))
     
@@ -714,10 +714,10 @@ class Ui_MainWindow(object):
             print(err)
 
     def ReturnBase(self):
-        global x
+        global cntnum
         if len(self.Text)>0:
                 r=len(self.Text)
-                for i in range(r-1): 
+                for i in range(r): 
                     text = self.Text[r-i-1]+" sending process has been aborted."
                     self.list.addItem(text)
                     self.Text=np.delete(self.Text, -1)
@@ -727,11 +727,11 @@ class Ui_MainWindow(object):
         self.setPRM(patient,room,medicine)
         if len(self.DE)>1:
             self.DE=np.delete(self.DE, np.s_[::1])
-            self.D=np.delete(self.D, np.s_[x:])
-            self.P=np.delete(self.P, np.s_[x:])
-            self.R=np.delete(self.R, np.s_[x:])
-            self.M=np.delete(self.M, np.s_[x:])
-            self.S=np.delete(self.S, np.s_[x:])
+            self.D=np.delete(self.D, np.s_[cntnum:])
+            self.P=np.delete(self.P, np.s_[cntnum:])
+            self.R=np.delete(self.R, np.s_[cntnum:])
+            self.M=np.delete(self.M, np.s_[cntnum:])
+            self.S=np.delete(self.S, np.s_[cntnum:])
             
             text="(0, 0, 0)"
             self.DE=np.append(self.DE,text)
@@ -799,17 +799,17 @@ def odomsub(data):
         print(err)        
 
 def goalsub(data):
-    global x
+    global cntnum
     g=data.goal
     if g==1:
         ui.DE=ui.DE[1:]
         ui.destinationpose.setText(str(ui.DE))
         if len(ui.Text)>0:
             text = ui.Text[0]+" is successfully sent."
-            ui.S[x]='Reached'
+            ui.S[cntnum]='Reached'
             ui.list.addItem(text)
             ui.Text=np.delete(ui.Text, 0)
-            x=x+1
+            cntnum=cntnum+1
         
     if g==-1:
         ui.DE=np.delete(ui.DE, np.s_[::1])
