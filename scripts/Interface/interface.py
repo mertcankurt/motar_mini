@@ -739,9 +739,6 @@ class Ui_MainWindow(object):
             sys.exit()
 
     def delbtnclicked(self):
-        patient=1
-        room=6
-        medicine="none"
         dest=dprm()
         dest.destination.position.x=0
         dest.destination.position.y=0

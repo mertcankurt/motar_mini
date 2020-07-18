@@ -176,6 +176,7 @@ if __name__ == "__main__":
     rospy.init_node('motar_interface')
     velocity_pub = rospy.Publisher('cmd_vel', Twist, queue_size = 10)
     point_pub = rospy.Publisher("motar_mini/dprm", dprm, queue_size=10)
+    #odom_sub = rospy.Subscriber("odom",Odometry,odomsub)
     #velocity_sub =rospy.Subscriber('motar/point',Point, velocitysub)
     
     app = QtWidgets.QApplication(sys.argv)
