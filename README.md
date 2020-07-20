@@ -3,6 +3,8 @@ The motar_mini robot package is designed as a sub-version of the "Medical Autono
 
 For motar main model : https://github.com/mertcankurt/MOTAR
 
+To watch the Demo: https://drive.google.com/file/d/1zwFz4nkgFa_tffjJkLat2m-b-pXoholF/view?usp=sharing
+
 Rviz Launching:
 
     $ roslaunch motar_mini motar_rviz_amcl.launch
