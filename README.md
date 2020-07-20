@@ -3,7 +3,7 @@ The motar_mini robot package is designed as a sub-version of the "Medical Autono
 
 For motar main model : https://github.com/mertcankurt/MOTAR
 
-To watch the Demo: https://drive.google.com/file/d/1zwFz4nkgFa_tffjJkLat2m-b-pXoholF/view?usp=sharing
+To watch the Demo: https://www.youtube.com/watch?v=6Ig-_KnUtJc
 
 Rviz Launching:
 
@@ -94,3 +94,5 @@ Mertcan KURT
 Burak KARGACI
 
 Yeter ATEŞ
+
+Musa ERTUĞRUL
