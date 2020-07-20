@@ -76,7 +76,7 @@ Then Launch amcl launch file:
 - Added Interface that can manually control the robot,and its speed  
 - The interface also publishes patient,room,medicine and destination to topic motar_mini/dprm
 - The interface has a login system. you can add a new account if you know the username and password of a viable account
-- Both a onefile executable and all the python codes are included
+- all the python codes are included
 
 First Do a catkin_make,
 Then open The file with no extension that is named Interface in the Folder motar_mini/scripts/Interface
